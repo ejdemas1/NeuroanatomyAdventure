@@ -476,7 +476,7 @@ GameObject:
   - component: {fileID: 56878796}
   m_Layer: 6
   m_Name: myelin_0
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1659,7 +1659,7 @@ GameObject:
   - component: {fileID: 319791978}
   m_Layer: 7
   m_Name: nerve_2
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3331,7 +3331,7 @@ Transform:
   m_GameObject: {fileID: 526170050}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.04, y: 1.767, z: -8.29}
+  m_LocalPosition: {x: -3.04, y: 1.522, z: -8.29}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4803,7 +4803,7 @@ Transform:
   m_GameObject: {fileID: 781309372}
   serializedVersion: 2
   m_LocalRotation: {x: 0.21643962, y: -0, z: -0, w: 0.976296}
-  m_LocalPosition: {x: -3.04, y: 7.5931826, z: -17.353077}
+  m_LocalPosition: {x: -3.04, y: 7.3481827, z: -17.353079}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4958,7 +4958,7 @@ GameObject:
   - component: {fileID: 807733335}
   m_Layer: 6
   m_Name: myelin_1
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5453,7 +5453,7 @@ GameObject:
   - component: {fileID: 875608411}
   m_Layer: 7
   m_Name: nerve_3
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7322,7 +7322,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4892266149284767509, guid: 978491b52ac449d4dbac348a700ac095, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.057473
+      value: 4.812473
       objectReference: {fileID: 0}
     - target: {fileID: 4892266149284767509, guid: 978491b52ac449d4dbac348a700ac095, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7803,7 +7803,7 @@ MonoBehaviour:
   notificationManager: {fileID: 1147335762}
   cam: {fileID: 781309376}
   gunTransform: {fileID: 1175783745}
-  gunRotationOffset: {x: 0, y: -90, z: 10}
+  gunRotationOffset: {x: 10, y: -90, z: 8}
   myelinMask:
     serializedVersion: 2
     m_Bits: 192
@@ -9575,11 +9575,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4892266149284767509, guid: 978491b52ac449d4dbac348a700ac095, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.5931826
+      value: 7.3481827
       objectReference: {fileID: 0}
     - target: {fileID: 4892266149284767509, guid: 978491b52ac449d4dbac348a700ac095, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -17.353077
+      value: -17.353079
       objectReference: {fileID: 0}
     - target: {fileID: 4892266149284767509, guid: 978491b52ac449d4dbac348a700ac095, type: 3}
       propertyPath: m_LocalRotation.w
@@ -10915,7 +10915,7 @@ GameObject:
   - component: {fileID: 1572255938}
   m_Layer: 7
   m_Name: nerve_0
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12547,7 +12547,7 @@ GameObject:
   - component: {fileID: 1838746868}
   m_Layer: 7
   m_Name: nerve_1
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

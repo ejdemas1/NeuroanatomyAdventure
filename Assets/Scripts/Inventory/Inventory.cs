@@ -26,12 +26,13 @@ public class Inventory : MonoBehaviour
     [Header("Keybinds")]
     public KeyCode inventoryKey = KeyCode.E;
 
-    private void Start() {
+    private void Start()
+    {
         foreach (Slot itemslot in slots)
         {
             itemslot.InitializeSlot();
         }
-        for (int i = 0 ; i < 4; i++)
+        for (int i = 0; i < 4; i++)
         {
             GetItem(craft1);
             GetItem(craft2);
@@ -40,7 +41,8 @@ public class Inventory : MonoBehaviour
         UpdateCraft();
     }
 
-    private void Update() {
+    private void Update()
+    {
         if (Input.GetKeyDown(inventoryKey))
         {
             ToggleInventory();

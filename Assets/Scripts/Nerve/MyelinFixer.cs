@@ -26,22 +26,28 @@ public class MyelinFixer : MonoBehaviour
     public float energy = 100;
     public Image[] energyPoints;
 
-    private void Start() {
+    private void Start()
+    {
         UpdateEnergyDisplay();
     }
 
-    private void Update() {
+    private void Update()
+    {
         RaycastHit hit;
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         AimGun();
-        
-        if (Physics.Raycast(ray, out hit, distance, myelinMask)) {
+
+        if (Physics.Raycast(ray, out hit, distance, myelinMask))
+        {
             Transform objectHit = hit.transform;
 
-            if (objectHit.gameObject.layer == LayerMask.NameToLayer("Myelin")) {
+            if (objectHit.gameObject.layer == LayerMask.NameToLayer("Myelin"))
+            {
                 Myelin myelin = objectHit.GetComponent<Myelin>();
-                if (Input.GetKeyDown(fixKey))  {
-                    if (myelin.isConnected == false) {
+                if (Input.GetKeyDown(fixKey))
+                {
+                    if (myelin.isConnected == false)
+                    {
                         //nerveShaderManager.FixMyelin(objectHit.GetComponent<Myelin>().idx);
                         myelin.isConnected = true;
                         energy -= 10;
@@ -65,10 +71,37 @@ public class MyelinFixer : MonoBehaviour
 
     private void AimGun()
     {
-        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-        Vector3 direction = ray.direction;
+        // Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+        // Vector3 direction = ray.direction;
 
-        // Apply the rotation to the gunTransform
-        gunTransform.rotation = Quaternion.LookRotation(direction) * Quaternion.Euler(gunRotationOffset);
+        // // Apply the rotation to the gunTransform
+        // gunTransform.rotation = Quaternion.LookRotation(direction) * Quaternion.Euler(gunRotationOffset);
+        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit))
+        {
+            // Get the point where the ray hits
+            Vector3 targetPoint = hit.point;
+
+            // Calculate the direction from the gun's position to the target point
+            Vector3 directionToTarget = (targetPoint - gunTransform.position).normalized;
+
+            // Get the camera's forward direction
+            Vector3 cameraForward = cam.transform.forward;
+
+            // Calculate a blended direction: the gun aims towards the target and follows the camera's up/down direction
+            Vector3 blendedDirection = Vector3.Lerp(directionToTarget, cameraForward, 0.5f);
+
+            // Apply the rotation to the gunTransform
+            gunTransform.rotation = Quaternion.LookRotation(blendedDirection) * Quaternion.Euler(gunRotationOffset);
+        }
+        else
+        {
+            // If the raycast didn't hit anything, just use the camera's forward direction
+            Vector3 direction = cam.transform.forward;
+            gunTransform.rotation = Quaternion.LookRotation(direction) * Quaternion.Euler(gunRotationOffset);
+        }
+
     }
 }

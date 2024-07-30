@@ -8,12 +8,12 @@ public class NotifcationTriggerEvent : MonoBehaviour
 {
 
     [Header("UI Content")]
-    [SerializeField] private TextMeshProUGUI  notifcationTextUI;
+    [SerializeField] private TextMeshProUGUI notifcationTextUI;
     [SerializeField] private Image imageIconUI;
 
     [Header("Message")]
     [SerializeField] public Sprite yourIcon;
-    [SerializeField] [TextArea] public string NotificationMessage;
+    [SerializeField][TextArea] public string NotificationMessage;
 
     [Header("Notification Removal")]
     //[SerializeField] private bool removeAfterExist = false;

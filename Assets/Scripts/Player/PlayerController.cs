@@ -33,7 +33,8 @@ public class PlayerController : MonoBehaviour
         controller = GetComponent<CharacterController>();
         playerInput = GetComponent<PlayerInput>();
 
-        if (playerInput == null) {
+        if (playerInput == null)
+        {
             Debug.LogError("PlayerInput is missing!");
             return;
         }
@@ -44,15 +45,18 @@ public class PlayerController : MonoBehaviour
         cameraTransform = Camera.main.transform;
     }
 
-    private void Start() {
+    private void Start()
+    {
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    private void OnEnable() {
+    private void OnEnable()
+    {
         useAction.performed += _ => UseTool();
     }
 
-    private void OnDisable() {
+    private void OnDisable()
+    {
         useAction.performed -= _ => UseTool();
     }
 
@@ -80,7 +84,7 @@ public class PlayerController : MonoBehaviour
         {
             playerVelocity.y = 0f;
         }
-
+            
         Vector2 input = moveAction.ReadValue<Vector2>();
         Vector3 move = new Vector3(input.x, 0, input.y);
         move = move.x * cameraTransform.right.normalized + move.z * cameraTransform.forward.normalized;
@@ -100,12 +104,4 @@ public class PlayerController : MonoBehaviour
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
     }
 
-    // Quiz testing
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "quiz")
-        {
-            Debug.Log("Quiz");
-        }
-    }
 }
