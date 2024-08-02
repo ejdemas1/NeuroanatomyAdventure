@@ -26,7 +26,8 @@ public class Myelin : MonoBehaviour
         {
             gameObject.GetComponent<MeshRenderer>().material = fixedMaterial;
         }
-        else {
+        else
+        {
             gameObject.GetComponent<MeshRenderer>().material = brokenMaterial;
         }
     }
