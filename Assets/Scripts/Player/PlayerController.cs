@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(CharacterController), typeof(PlayerInput))]
+
 public class PlayerController : MonoBehaviour
 {
     // Movement variables
@@ -17,6 +18,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 playerVelocity;
     private bool groundedPlayer;
     private PlayerInput playerInput;
+    private Collider ghostCollider;
     private Transform cameraTransform;
 
     // Player input actions
@@ -32,6 +34,7 @@ public class PlayerController : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         playerInput = GetComponent<PlayerInput>();
+        ghostCollider = GetComponentInChildren<Collider>();
 
         if (playerInput == null)
         {
@@ -79,12 +82,12 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         // Check if player is grounded 
-        groundedPlayer = Physics.Raycast(transform.position, Vector3.down, 1.1f);
+        groundedPlayer = Physics.Raycast(ghostCollider.bounds.center, Vector3.down, ghostCollider.bounds.extents.y + 0.1f);
         if (groundedPlayer && playerVelocity.y < 0)
         {
             playerVelocity.y = 0f;
         }
-            
+
         Vector2 input = moveAction.ReadValue<Vector2>();
         Vector3 move = new Vector3(input.x, 0, input.y);
         move = move.x * cameraTransform.right.normalized + move.z * cameraTransform.forward.normalized;
@@ -102,6 +105,14 @@ public class PlayerController : MonoBehaviour
         // Rotate towards camera direction
         Quaternion targetRotation = Quaternion.Euler(0, cameraTransform.eulerAngles.y, 0);
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Zombie"))
+        {
+            playerVelocity.y = 0f;
+        }
     }
 
 }

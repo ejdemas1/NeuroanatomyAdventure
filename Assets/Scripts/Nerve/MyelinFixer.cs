@@ -26,6 +26,8 @@ public class MyelinFixer : MonoBehaviour
     public float energy = 100;
     public Image[] energyPoints;
 
+    private bool isActive = false;
+
     private void Start()
     {
         UpdateEnergyDisplay();
@@ -33,32 +35,36 @@ public class MyelinFixer : MonoBehaviour
 
     private void Update()
     {
-        RaycastHit hit;
-        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-        AimGun();
-
-        if (Physics.Raycast(ray, out hit, distance, myelinMask))
+        if (isActive)
         {
-            Transform objectHit = hit.transform;
+            RaycastHit hit;
+            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+            AimGun();
 
-            if (objectHit.gameObject.layer == LayerMask.NameToLayer("Myelin"))
+            if (Physics.Raycast(ray, out hit, distance, myelinMask))
             {
-                Myelin myelin = objectHit.GetComponent<Myelin>();
-                if (Input.GetKeyDown(fixKey))
+                Transform objectHit = hit.transform;
+
+                if (objectHit.gameObject.layer == LayerMask.NameToLayer("Myelin"))
                 {
-                    if (myelin.isConnected == false)
+                    Myelin myelin = objectHit.GetComponent<Myelin>();
+                    if (Input.GetKeyDown(fixKey))
                     {
-                        //nerveShaderManager.FixMyelin(objectHit.GetComponent<Myelin>().idx);
-                        myelin.isConnected = true;
-                        energy -= 10;
-                        UpdateEnergyDisplay();
-                        //Debug.Log("Shot " + objectHit.name + myelin.isConnected);
-                        notificationManager.TriggerMyelinFixNotification();
+                        if (myelin.isConnected == false)
+                        {
+                            //nerveShaderManager.FixMyelin(objectHit.GetComponent<Myelin>().idx);
+                            myelin.isConnected = true;
+                            energy -= 10;
+                            UpdateEnergyDisplay();
+                            //Debug.Log("Shot " + objectHit.name + myelin.isConnected);
+                            notificationManager.TriggerMyelinFixNotification();
+                        }
                     }
                 }
-            }
 
+            }
         }
+
     }
 
     private void UpdateEnergyDisplay()
@@ -71,37 +77,6 @@ public class MyelinFixer : MonoBehaviour
 
     private void AimGun()
     {
-        // Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-        // Vector3 direction = ray.direction;
-
-        // // Apply the rotation to the gunTransform
-        // gunTransform.rotation = Quaternion.LookRotation(direction) * Quaternion.Euler(gunRotationOffset);
-        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit))
-        {
-            // Get the point where the ray hits
-            Vector3 targetPoint = hit.point;
-
-            // Calculate the direction from the gun's position to the target point
-            Vector3 directionToTarget = (targetPoint - gunTransform.position).normalized;
-
-            // Get the camera's forward direction
-            Vector3 cameraForward = cam.transform.forward;
-
-            // Calculate a blended direction: the gun aims towards the target and follows the camera's up/down direction
-            Vector3 blendedDirection = Vector3.Lerp(directionToTarget, cameraForward, 0.5f);
-
-            // Apply the rotation to the gunTransform
-            gunTransform.rotation = Quaternion.LookRotation(blendedDirection) * Quaternion.Euler(gunRotationOffset);
-        }
-        else
-        {
-            // If the raycast didn't hit anything, just use the camera's forward direction
-            Vector3 direction = cam.transform.forward;
-            gunTransform.rotation = Quaternion.LookRotation(direction) * Quaternion.Euler(gunRotationOffset);
-        }
-
+        // TODO
     }
 }
