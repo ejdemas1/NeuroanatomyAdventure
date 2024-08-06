@@ -10,12 +10,9 @@ public class Zombie : MonoBehaviour
     public float distance;
 
     public float attackRange = 1.0f;
-
-    private Rigidbody rb;
     void Awake()
     {
         health = 3;
-        rb = GetComponent<Rigidbody>();
     }
     void Update()
     {
@@ -33,9 +30,15 @@ public class Zombie : MonoBehaviour
         }
         else
         {
-            transform.position = Vector3.MoveTowards(transform.position, target.transform.position, speed);
+            Vector3 targetPosition = target.position;
+            targetPosition.y = transform.position.y; // Keep the y position the same
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed);
+
 
         }
+
+        // Rotate towards player
+        transform.LookAt(target);
     }
 
 

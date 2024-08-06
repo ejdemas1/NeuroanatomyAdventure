@@ -150,7 +150,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   target: {fileID: 0}
-  speed: 0
-  distance: 0
-  attackRange: 1
-  bounceForce: 50
+  speed: 0.01
+  distance: 50
+  attackRange: 2
