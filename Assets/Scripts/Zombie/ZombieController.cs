@@ -9,16 +9,20 @@ public class Zombie : MonoBehaviour
     public float speed;
     public float distance;
 
-    public float attackRange = 1.0f;
+    Animator animator;
+
+    public float attackRange = 5.0f;
     void Awake()
     {
         health = 3;
+        animator = GetComponentInChildren<Animator>();
     }
     void Update()
     {
         // Destory if health is 0
         if (health <= 0)
         {
+            // Death animation wait and then destory object
             Destroy(gameObject);
         }
 
@@ -30,11 +34,11 @@ public class Zombie : MonoBehaviour
         }
         else
         {
+            // Follow and animate walk
+            animator.SetBool("isWalking", true);
             Vector3 targetPosition = target.position;
-            targetPosition.y = transform.position.y; // Keep the y position the same
+            targetPosition.y = transform.position.y;
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed);
-
-
         }
 
         // Rotate towards player
@@ -46,6 +50,7 @@ public class Zombie : MonoBehaviour
     private void Attack()
     {
         // Implement attack and attack animation
-        Debug.Log("Attack");
+        animator.SetBool("isWalking", false);
+        animator.SetBool("isAttacking", true);
     }
 }

@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 6281489809940405000}
   - component: {fileID: 7236085956003547949}
   - component: {fileID: 8492637328895695175}
+  - component: {fileID: 3881679792476561158}
   m_Layer: 9
   m_Name: Tumor_Big
   m_TagString: Zombie
@@ -85,6 +86,7 @@ MonoBehaviour:
   target: {fileID: 0}
   speed: 0.005
   distance: 50
+  animator: {fileID: 3881679792476561158}
   attackRange: 2
 --- !u!143 &7236085956003547949
 CharacterController:
@@ -135,6 +137,27 @@ CapsuleCollider:
   m_Height: 4
   m_Direction: 1
   m_Center: {x: 0, y: 2, z: 0}
+--- !u!95 &3881679792476561158
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 445295799531992839}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2f63b489fc8b445479955122ae188112, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &612065668434217358
 GameObject:
   m_ObjectHideFlags: 0
@@ -848,7 +871,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7543191101962587601}
-  - component: {fileID: 8214426729796360479}
+  - component: {fileID: 3433742005465679488}
   m_Layer: 9
   m_Name: 03_Tumor_H
   m_TagString: Untagged
@@ -873,36 +896,27 @@ Transform:
   - {fileID: 8179634946157011383}
   m_Father: {fileID: 3490355923430725924}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!111 &8214426729796360479
-Animation:
+--- !u!95 &3433742005465679488
+Animator:
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7198191447608022891}
   m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 2839624859228575212, guid: 892af157f99932e468594ff12187487a, type: 3}
-  m_Animations:
-  - {fileID: 2839624859228575212, guid: 892af157f99932e468594ff12187487a, type: 3}
-  - {fileID: -4642487427431380932, guid: 892af157f99932e468594ff12187487a, type: 3}
-  - {fileID: 6877000993455524460, guid: 892af157f99932e468594ff12187487a, type: 3}
-  - {fileID: -8797073961263963872, guid: 892af157f99932e468594ff12187487a, type: 3}
-  - {fileID: -6657577895358629246, guid: 892af157f99932e468594ff12187487a, type: 3}
-  - {fileID: 7716064050062829666, guid: 892af157f99932e468594ff12187487a, type: 3}
-  - {fileID: -3197834136247688115, guid: 892af157f99932e468594ff12187487a, type: 3}
-  - {fileID: -3962183835614420311, guid: 892af157f99932e468594ff12187487a, type: 3}
-  - {fileID: -5945978798825147382, guid: 892af157f99932e468594ff12187487a, type: 3}
-  - {fileID: 5098369989197833166, guid: 892af157f99932e468594ff12187487a, type: 3}
-  - {fileID: 3186068550057207111, guid: 892af157f99932e468594ff12187487a, type: 3}
-  - {fileID: -1941319748582524403, guid: 892af157f99932e468594ff12187487a, type: 3}
-  - {fileID: 1078760902950137931, guid: 892af157f99932e468594ff12187487a, type: 3}
-  - {fileID: -6710372824275472335, guid: 892af157f99932e468594ff12187487a, type: 3}
-  - {fileID: -4965906472319798951, guid: 892af157f99932e468594ff12187487a, type: 3}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2f63b489fc8b445479955122ae188112, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7333185426926359105
 GameObject:
   m_ObjectHideFlags: 0
