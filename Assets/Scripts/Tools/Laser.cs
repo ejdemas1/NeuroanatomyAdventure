@@ -47,7 +47,7 @@ public class Laser : MonoBehaviour
                             // energy -= 10;
                             // UpdateEnergyDisplay();
                             Debug.Log("Shot " + objectHit.name);
-                            zombie.health--;
+                            zombie.Hit();
                         }
                     }
 

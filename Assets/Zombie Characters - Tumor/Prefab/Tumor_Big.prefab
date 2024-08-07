@@ -86,7 +86,6 @@ MonoBehaviour:
   target: {fileID: 0}
   speed: 0.005
   distance: 50
-  animator: {fileID: 3881679792476561158}
   attackRange: 2
 --- !u!143 &7236085956003547949
 CharacterController:
@@ -150,7 +149,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 2f63b489fc8b445479955122ae188112, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
