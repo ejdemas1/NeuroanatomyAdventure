@@ -9,9 +9,7 @@ public class Zombie : MonoBehaviour
     public Transform target;
     public float speed;
     public float distance;
-
     Animator animator;
-
     public float attackRange = 5.0f;
     void Awake()
     {
@@ -21,10 +19,11 @@ public class Zombie : MonoBehaviour
     void Update()
     {
 
-        // Start if health is 0
+        // Check if health is 0 and trigger death
         if (health <= 0)
         {
             TriggerDeath();
+            return;
         }
 
         // Attack player if in range, if not follow if in find range
@@ -38,9 +37,14 @@ public class Zombie : MonoBehaviour
         }
         else
         {
-            if (!animator.GetBool("isDead") && !animator.GetBool("isAttacking"))
+            // Stop attacking if player is out of range
+            if (animator.GetBool("isAttacking"))
             {
-                animator.SetBool("isAttacking", false);
+                StopAttack();
+            }
+
+            if (!animator.GetBool("isDead"))
+            {
                 animator.SetBool("isWalking", true);
                 Vector3 targetPosition = target.position;
                 targetPosition.y = transform.position.y;
@@ -63,6 +67,14 @@ public class Zombie : MonoBehaviour
         animator.SetBool("isAttacking", true);
     }
 
+    // Stop attacking
+    private void StopAttack()
+    {
+        animator.SetBool("isAttacking", false);
+        animator.SetBool("isWalking", true);
+
+    }
+
     private void TriggerDeath()
     {
         if (!animator.GetBool("isDead"))
@@ -70,6 +82,7 @@ public class Zombie : MonoBehaviour
             animator.SetBool("isAttacking", false);
             animator.SetBool("isWalking", false);
             animator.SetBool("isDead", true);
+            animator.Play("Death_Tumor_H", 0, 0f);
             StartCoroutine(Death());
         }
     }

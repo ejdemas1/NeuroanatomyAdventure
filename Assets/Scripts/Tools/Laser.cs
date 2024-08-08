@@ -66,11 +66,11 @@ public class Laser : MonoBehaviour
 
     void Shoot()
     {
-        laser.SetActive(true);
+        //.SetActive(true);
     }
 
     void StopShooting()
     {
-        laser.SetActive(false);
+       // laser.SetActive(false);
     }
 }
